@@ -19,9 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: echo "::set-output name=time::$time"
       - uses: ./
         with:
           file: .github/workflows/sample-job-summary.md
           vars: |
             message: sample text
             count: 3
+            time: ${{ steps.hello.outputs.time }}

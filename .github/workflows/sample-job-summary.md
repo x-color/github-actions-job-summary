@@ -1,6 +1,5 @@
 # Sample job summary
 
-
 ## Text
 
 The embedded text is here.
@@ -10,3 +9,5 @@ The embedded text is here.
 ## Number
 
 Count is {count}.
+
+Generated at {time}.
