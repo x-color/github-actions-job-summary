@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: time
+      - name: output
+        id: output
         run: |
           time=$(date)
           echo "::set-output name=time::$time"
@@ -29,4 +30,4 @@ jobs:
           vars: |
             message: sample text
             count: 3
-            time: ${{ steps.time.outputs.time }}
+            time: ${{ steps.output.outputs.time }}
