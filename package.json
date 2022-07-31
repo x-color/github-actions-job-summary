@@ -1,6 +1,6 @@
 {
   "name": "github-action-job-summary",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "It is GitHub Actions to generate GitHub Actions Job Summary with Markdown file",
   "main": "lib/main.js",
