@@ -48,7 +48,7 @@ const format = (template, vars) => {
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const mdFile = core.getInput('mdfile');
+            const mdFile = core.getInput('file');
             const vars = yaml.load(core.getInput('vars'));
             const md = yield fs_1.promises.readFile(mdFile);
             yield core.summary.addRaw(format(md.toString(), vars)).write();
