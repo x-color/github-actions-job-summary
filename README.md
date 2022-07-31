@@ -37,7 +37,7 @@ jobs:
         run: |
           time=$(date)
           echo "::set-output name=time::$time"
-      - uses: ./
+      - uses: x-color/github-actions-job-summary@v0.1.0
         with:
           file: .github/workflows/summary.md
           vars: |
