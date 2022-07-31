@@ -1,16 +1,22 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as yaml from 'js-yaml'
+import {promises as fs} from 'fs'
+
+const format = (template: string, vars: Map<string, string>): string => {
+  let result = template
+  for (const [k, v] of vars.entries()) {
+    result = result.replace(`{${k}}`, v)
+  }
+
+  return result
+}
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    const mdFile = core.getInput('file')
+    const vars = yaml.load(core.getInput('vars')) as Map<string, string>
+    const md = await fs.readFile(mdFile)
+    await core.summary.addRaw(format(md.toString(), vars)).write()
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
