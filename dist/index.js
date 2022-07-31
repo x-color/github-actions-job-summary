@@ -50,6 +50,8 @@ function run() {
         try {
             const mdFile = core.getInput('file');
             const vars = yaml.load(core.getInput('vars'));
+            // eslint-disable-next-line no-console
+            console.log(vars);
             const md = yield fs_1.promises.readFile(mdFile);
             yield core.summary.addRaw(format(md.toString(), vars)).write();
         }
