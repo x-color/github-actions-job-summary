@@ -40,7 +40,7 @@ const yaml = __importStar(__nccwpck_require__(917));
 const fs_1 = __nccwpck_require__(747);
 const format = (template, vars) => {
     let result = template;
-    for (const [k, v] of vars.entries()) {
+    for (const [k, v] of Object.entries(vars)) {
         result = result.replace(`{${k}}`, v);
     }
     return result;
@@ -50,8 +50,6 @@ function run() {
         try {
             const mdFile = core.getInput('file');
             const vars = yaml.load(core.getInput('vars'));
-            // eslint-disable-next-line no-console
-            console.log(vars);
             const md = yield fs_1.promises.readFile(mdFile);
             yield core.summary.addRaw(format(md.toString(), vars)).write();
         }
