@@ -1,5 +1,5 @@
 name: GitHub Actions Job Summary
-description: It generates GitHub Actions Job Summary with Maekdown file.
+description: It generates GitHub Actions Job Summary with Markdown file.
 author: x-color
 inputs:
   file:
@@ -9,3 +9,6 @@ inputs:
 runs:
   using: node16
   main: dist/index.js
+branding:
+  color: green
+  icon: file-text
