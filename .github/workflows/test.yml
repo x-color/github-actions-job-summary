@@ -20,7 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: time
-        run: echo "::set-output name=time::$(date)"
+        run: |
+          time=$(date)
+          echo "::set-output name=time::$time"
       - uses: ./
         with:
           file: .github/workflows/sample-job-summary.md
