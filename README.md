@@ -5,7 +5,7 @@ It is GitHub Actions to generate GitHub Actions Job Summary with Markdown file.
 ## Usage
 
 ```yaml
-- uses: x-color/github-actions-job-summary@v1
+- uses: x-color/github-actions-job-summary@v0.1.0
   with:
     file: <file path>
     vars: |
